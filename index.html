@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cheapy Cheapy Hull Cleaning — Affordable Hull Scraping</title>
+<meta name="description" content="Affordable hull cleaning for small boats and cruisers. Scraper and brush only, honest per-foot or per-meter pricing." />
+<meta name="theme-color" content="#0b6e4f" />
+<style>
+:root {
+  --accent:#0b6e4f;
+  --light:#f4f6f7;
+  --wave1:#ffffff;
+  --wave2:#dfe3e4;
+  --wave3:#bfc3c5;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--light);color:#0f172a;overflow-x:hidden;}
+header{
+  position:relative;
+  background:linear-gradient(135deg,#0b6e4f,#0d8f64);
+  color:#fff;
+  padding:60px 20px 160px;
+  text-align:center;
+  overflow:hidden;
+}
+header h1{font-size:2.2rem;margin-bottom:8px;}
+header p{opacity:0.9;font-size:1rem;}
+/* Waves */
+.wave{
+  position:absolute;
+  bottom:0;left:0;width:200%;height:160px;
+  background-repeat:repeat-x;
+  opacity:0.8;
+  animation:waveMove 10s linear infinite;
+}
+.wave:nth-child(3){background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="160"><path fill="%23ffffff" d="M0 80 Q150 20 300 80 T600 80 V160 H0 Z"/></svg>');animation-duration:8s;opacity:0.9;}
+.wave:nth-child(4){background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="160"><path fill="%23dfe3e4" d="M0 100 Q150 60 300 100 T600 100 V160 H0 Z"/></svg>');animation-duration:12s;}
+.wave:nth-child(5){background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="160"><path fill="%23bfc3c5" d="M0 120 Q150 80 300 120 T600 120 V160 H0 Z"/></svg>');animation-duration:16s;}
+@keyframes waveMove {from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* Layout */
+main{padding:40px 16px;display:grid;gap:28px;justify-content:center;}
+.card{
+  background:#fff;border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.08);
+  padding:24px;max-width:700px;width:100%;
+  text-align:center;
+  transition:transform .4s ease, box-shadow .4s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,0.1);}
+.card h2{color:var(--accent);margin-bottom:10px;}
+ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;}
+
+/* Inputs */
+input,select,textarea{
+  width:100%;padding:14px 16px;margin-top:6px;margin-bottom:12px;
+  border:1px solid #ccc;border-radius:14px;
+  font-size:1rem;font-family:inherit;
+  background:#fff;transition:all .2s ease;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:0 0 0 4px rgba(11,110,79,0.15);
+}
+
+/* Toggle */
+.toggle{position:relative;display:inline-block;width:64px;height:32px;margin-left:8px;}
+.toggle input{opacity:0;width:0;height:0;}
+.slider{
+  position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;
+  background:#ccc;transition:.3s;border-radius:34px;
+}
+.slider:before{
+  content:"";position:absolute;height:26px;width:26px;left:3px;bottom:3px;
+  background:white;transition:.3s;border-radius:50%;
+}
+input:checked + .slider{background-color:var(--accent);}
+input:checked + .slider:before{transform:translateX(32px);}
+
+/* Estimate */
+.price-estimate-card{
+  grid-column:1 / -1;padding:18px 24px;background:#e8f6ef;
+  border-radius:16px;margin:20px auto 0;display:flex;justify-content:center;
+  align-items:center;max-width:700px;box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+.price-estimate{font-size:1.45rem;font-weight:700;color:var(--accent);text-align:center;width:100%;transition:transform .3s ease;}
+.price-estimate.pop{transform:scale(1.07);}
+.warning{color:#b00;font-weight:600;margin-top:6px;display:none;text-align:center;transition:all .3s;}
+.warning.show{display:block;animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.warning.glow{box-shadow:0 0 12px 2px rgba(255,0,0,0.6);}
+
+/* Footer */
+footer{background:#0b6e4f;color:#fff;padding:30px 20px;text-align:center;}
+footer a{display:inline-block;margin-top:10px;font-size:1rem;color:#fff;font-weight:600;background:#13a76d;padding:10px 18px;border-radius:30px;text-decoration:none;transition:background .3s,transform .2s;}
+footer a:hover{background:#17c87e;transform:translateY(-2px);}
+
+/* Floating Book Now animation */
+#bookNow{
+  background:#0b6e4f;color:#fff;border:none;padding:14px 26px;border-radius:30px;
+  font-size:1.1rem;cursor:pointer;transition:transform .2s,box-shadow .2s;
+  animation:floatUpDown 3s ease-in-out infinite;
+}
+@keyframes floatUpDown {
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Cheapy Cheapy Hull Cleaning</h1>
+  <p>Affordable Hull Scraping — Honest Per-Foot or Per-Meter Pricing</p>
+  <div class="wave"></div><div class="wave"></div><div class="wave"></div>
+</header>
+
+<main>
+  <div class="grid-2">
+    <div class="card">
+      <h2>Services</h2>
+      <ul>
+        <li>Soft brush and scraper hull cleaning</li>
+        <li>Free propeller and rudder clean <small>(with hull clean)</small></li>
+        <li>No chemicals — eco-friendly methods</li>
+        <li>Quick turnaround at your mooring or dock</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Pricing</h2>
+      <div id="pricingText"></div>
+      <div style="margin-top:10px;display:flex;justify-content:center;align-items:center;gap:6px;">
+        <span id="waterlineLabel">Waterline clean (USD 20 per hull)</span>
+        <label class="toggle"><input type="checkbox" id="waterlineToggle"><span class="slider"></span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Quick Quote</h2>
+    <label id="lengthLabel">Boat Length (ft)</label>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <input type="number" id="hullLength" placeholder="Enter length" min="0.5" step="0.1" />
+      <label class="toggle"><input type="checkbox" id="unitToggle"><span class="slider"></span></label>
+      <span id="unitDisplay">ft</span>
+    </div>
+    <div class="warning" id="hullWarning">Maximum: 60 ft / 18.3 m</div>
+
+    <label>Boat Type</label>
+    <select id="boatType">
+      <option value="" disabled selected>Select...</option>
+      <option value="dinghy">Dinghy</option>
+      <option value="monohull">Monohull</option>
+      <option value="catamaran">Catamaran</option>
+      <option value="trimaran">Trimaran</option>
+    </select>
+
+    <label>Growth Level</label>
+    <select id="growth">
+      <option value="" disabled selected>Select...</option>
+      <option value="light">Light</option>
+      <option value="medium">Medium</option>
+      <option value="heavy">Heavy</option>
+    </select>
+
+    <label>Currency</label>
+    <select id="currency">
+      <option value="USD" selected>USD</option>
+      <option value="AUD">AUD</option>
+      <option value="EUR">EUR</option>
+    </select>
+
+    <label>Other Information</label>
+    <textarea id="otherInfo" rows="3" placeholder="Add any notes or details..."></textarea>
+
+    <button id="bookNow">Book Now</button>
+  </div>
+
+  <div class="price-estimate-card">
+    <div class="price-estimate" id="priceEstimate">Enter a length to get an estimate</div>
+  </div>
+</main>
+
+<footer>
+  © 2025 Cheapy Cheapy Hull Cleaning — All Rights Reserved<br>
+  <a href="mailto:cheapyhullcleaning@gmail.com">cheapyhullcleaning@gmail.com</a>
+</footer>
+
+<script>
+const FEET_TO_METER=0.3048,MAX_FT=60,MAX_M=MAX_FT*FEET_TO_METER;
+const baseRates={light:3.5,medium:4.5,heavy:5.5};
+const currencyRates={USD:1,AUD:1.5,EUR:0.9};
+const waterlineUSD=20;
+
+const hull=document.getElementById('hullLength');
+const unitToggle=document.getElementById('unitToggle');
+const unitDisplay=document.getElementById('unitDisplay');
+const lengthLabel=document.getElementById('lengthLabel');
+const boatType=document.getElementById('boatType');
+const growth=document.getElementById('growth');
+const currency=document.getElementById('currency');
+const waterlineToggle=document.getElementById('waterlineToggle');
+const waterlineLabel=document.getElementById('waterlineLabel');
+const estimate=document.getElementById('priceEstimate');
+const warning=document.getElementById('hullWarning');
+const pricingText=document.getElementById('pricingText');
+const bookNow=document.getElementById('bookNow');
+const otherInfo=document.getElementById('otherInfo');
+
+function updatePrice(){
+  const usingMeters=unitToggle.checked;
+  const length=parseFloat(hull.value)||0;
+  const currencyRate=currencyRates[currency.value]||1;
+  const baseRate=baseRates[growth.value];
+  const hulls=boatType.value==="catamaran"?2:boatType.value==="trimaran"?3:1;
+  const dinghyMult=boatType.value==="dinghy"?0.8:1;
+  const lengthFt=usingMeters?length/FEET_TO_METER:length;
+
+  const overLimit=(usingMeters&&length>MAX_M)||(!usingMeters&&length>MAX_FT);
+  if(overLimit){
+    warning.classList.add('show','glow');
+    setTimeout(()=>warning.classList.remove('glow'),600);
+  } else warning.classList.remove('show');
+
+  const rateFactor=currencyRate*(usingMeters?1/FEET_TO_METER:1);
+  const unitLabel=usingMeters?"m":"ft";
+  const light=(baseRates.light*rateFactor).toFixed(2);
+  const med=(baseRates.medium*rateFactor).toFixed(2);
+  const heavy=(baseRates.heavy*rateFactor).toFixed(2);
+  pricingText.innerHTML=`
+    Light Growth: <strong>${light} ${currency.value}</strong> per ${unitLabel} per hull<br>
+    Medium Growth: <strong>${med} ${currency.value}</strong> per ${unitLabel} per hull<br>
+    Heavy Growth: <strong>${heavy} ${currency.value}</strong> per ${unitLabel} per hull
+  `;
+  const wl=waterlineUSD*currencyRate;
+  waterlineLabel.textContent=`Waterline clean (${currency.value} ${wl.toFixed(0)} per hull)`;
+  lengthLabel.textContent=`Boat Length (${unitLabel})`;
+  unitDisplay.textContent=unitLabel;
+
+  if(!boatType.value||!growth.value){estimate.textContent="Enter a length to get an estimate";return;}
+
+  const cleanUSD=baseRate*lengthFt*hulls*dinghyMult;
+  let total=cleanUSD*currencyRate;
+  if(waterlineToggle.checked) total+=wl*hulls;
+  estimate.textContent=`Total Estimated Cost: ${currency.value} ${total.toFixed(2)}`;
+  estimate.classList.add('pop');setTimeout(()=>estimate.classList.remove('pop'),300);
+}
+
+[boatType,growth,currency,waterlineToggle,hull,unitToggle].forEach(el=>el.addEventListener('input',updatePrice));
+
+bookNow.addEventListener('click',()=>{
+  const subject=`Hull Cleaning Quote Request — ${boatType.value||'Boat'}`;
+  const body=`Boat Type: ${boatType.value||'N/A'}%0ALength: ${hull.value||'N/A'} ${unitDisplay.textContent}%0AGrowth: ${growth.value||'N/A'}%0AWaterline Clean: ${waterlineToggle.checked?'Yes':'No'}%0ACurrency: ${currency.value}%0AOther Info: ${encodeURIComponent(otherInfo.value||'')}`;
+  window.location.href=`mailto:cheapyhullcleaning@gmail.com?subject=${subject}&body=${body}`;
+});
+
+window.addEventListener('load',updatePrice); // now shows pricing immediately
+</script>
+</body>
+</html>
